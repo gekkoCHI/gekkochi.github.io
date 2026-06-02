@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Chi Wang, CFA — Ph.D. Candidate in Finance, University of North Texas. Research in empirical asset pricing, monetary policy uncertainty, and ETF market structure.">
+<meta property="og:title" content="Chi Wang, CFA — Finance Ph.D. Candidate, University of North Texas">
+<meta property="og:description" content="Research in empirical asset pricing, monetary policy uncertainty, ETF market structure, and corporate finance.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/photo.jpg">
+<title>Chi Wang — Finance Ph.D. Candidate, UNT</title>
+<style>
+/* ============================================================
+   ROOT & RESET
+   ============================================================ */
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #5a5a5a;
+  --light: #888;
+  --accent: #1b3a6b;
+  --accent2: #2255a4;
+  --accent-light: #eef3fb;
+  --border: #dde3ec;
+  --card-bg: #f9fafd;
+  --red: #b8242a;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+}
+a { color: var(--accent2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3, h4 { font-family: Georgia, "Times New Roman", serif; line-height: 1.25; }
+img { max-width: 100%; display: block; }
+code { font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.85em; background: #f0f4fa; padding: 0.1em 0.35em; border-radius: 3px; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+#top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #0b1e3c;  /* deep navy fallback */
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+/* Atmospheric photo backdrop — heavily treated, not figurative */
+#top-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('asset/photo_presenting.jfif') center 32% / cover no-repeat;
+  filter: grayscale(1) blur(1.5px) brightness(0.55) contrast(1.1);
+  opacity: 0.42;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Navy gradient overlay — academic / finance-terminal feel */
+#top-nav::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(8,22,46,0.92) 0%,
+    rgba(11,30,60,0.55) 45%,
+    rgba(27,58,107,0.88) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+/* Subtle gold/brass underline — academic crest accent */
+#top-nav {
+  border-bottom: 1px solid #c8a960;
+}
+.nav-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  gap: 0;
+}
+.nav-name {
+  font-family: Georgia, serif;
+  font-size: 1.02rem;
+  color: #ffffff;
+  margin-right: auto;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+.nav-name::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 16px;
+  background: #c8a960;
+  margin-right: 0.65rem;
+  vertical-align: -3px;
+}
+.nav-links {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.82);
+  font-size: 0.78rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  transition: color 0.18s;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+.nav-links a:hover { color: #c8a960; text-decoration: none; }
+
+/* ============================================================
+   PAGE WRAPPER
+   ============================================================ */
+.page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ============================================================
+   SECTION COMMON
+   ============================================================ */
+.section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+.section:last-of-type { border-bottom: none; }
+.section-heading {
+  font-family: Georgia, serif;
+  font-size: 1.65rem;
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero { padding: 4rem 0 4.5rem; border-bottom: 1px solid var(--border); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.hero-photos { width: 240px; }
+.hero-photo-main {
+  width: 240px;
+  height: 300px;            /* 4:5 to match 640x800 source */
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 6px 26px rgba(27,58,107,0.18);
+  display: block;
+  /* subtle gold accent ring */
+  border-top: 3px solid #c8a960;
+}
+.hero-name {
+  font-size: 2.35rem;
+  font-weight: normal;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.hero-role { font-size: 1.05rem; color: var(--muted); font-style: italic; margin-bottom: 0.2rem; }
+.hero-univ { font-size: 0.92rem; color: var(--muted); margin-bottom: 1.6rem; }
+.hero-bio {
+  font-size: 0.97rem;
+  line-height: 1.78;
+  max-width: 66ch;
+  color: var(--text);
+  margin-bottom: 1.4rem;
+}
+.hero-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.3rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.hero-contact a { color: var(--muted); }
+.hero-contact a:hover { color: var(--accent); text-decoration: underline; }
+.hero-contact .sep { color: var(--border); }
+.hero-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.46rem 1.1rem;
+  border-radius: 3px;
+  font-size: 0.84rem;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-primary:hover { background: #0f2447; border-color: #0f2447; text-decoration: none; }
+.btn-outline { background: transparent; color: var(--accent); border-color: var(--accent); }
+.btn-outline:hover { background: var(--accent-light); text-decoration: none; }
+
+/* ============================================================
+   PAPER CARDS
+   ============================================================ */
+.paper-cards { display: flex; flex-direction: column; gap: 2.5rem; }
+
+.paper-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 2px 14px rgba(27,58,107,0.05);
+  /* Scroll-in start state */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.paper-card.visible { opacity: 1; transform: translateY(0); }
+
+.paper-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+.paper-title {
+  font-family: Georgia, serif;
+  font-size: 1.13rem;
+  color: var(--accent);
+  flex: 1;
+  min-width: 200px;
+}
+.badge {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 2px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 0.2rem;
+}
+.badge-jmp { background: var(--red); color: #fff; }
+
+.paper-status { font-size: 0.81rem; color: var(--light); margin-bottom: 0.9rem; }
+.paper-summary { font-size: 0.94rem; line-height: 1.72; color: var(--text); margin-bottom: 1.2rem; max-width: 82ch; }
+
+/* Figure container */
+.paper-figure {
+  margin: 1.2rem 0 1.4rem;
+  padding: 1.2rem 1rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.fig-subtitle {
+  font-size: 0.75rem;
+  color: var(--light);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 0.85rem;
+}
+
+/* Links row */
+.paper-links { display: flex; gap: 0.65rem; flex-wrap: wrap; margin-top: 0.25rem; }
+.paper-link {
+  font-size: 0.82rem;
+  color: var(--accent2);
+  border: 1px solid var(--border);
+  padding: 0.22rem 0.6rem;
+  border-radius: 2px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.paper-link:hover { background: var(--accent-light); border-color: var(--accent2); text-decoration: none; }
+
+.abstract-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.22rem 0.6rem;
+  font-size: 0.82rem;
+  color: var(--accent2);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.abstract-btn:hover { background: var(--accent-light); }
+
+.abstract-panel {
+  display: none;
+  margin-top: 0.9rem;
+  padding: 0.85rem 1.1rem;
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 3px 3px 0;
+  font-size: 0.89rem;
+  line-height: 1.72;
+  color: var(--text);
+}
+.abstract-panel.open { display: block; }
+
+/* ============================================================
+   FIGURE 1 — Grouped Bar Chart (Paper 1)
+   ============================================================ */
+.f1-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+.f1-groups { display: flex; gap: 3.5rem; align-items: flex-end; }
+.f1-group { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.f1-group-label { font-size: 0.77rem; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-align: center; }
+.f1-bars-row {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-end;
+  height: 120px;
+}
+.f1-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
+.f1-bar {
+  width: 38px;
+  border-radius: 3px 3px 0 0;
+  transition: height 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.f1-bar-blue { background: var(--accent); }
+.f1-bar-red  { background: var(--red); }
+.f1-bar-lbl  { font-size: 0.67rem; color: var(--muted); text-align: center; width: 54px; line-height: 1.3; }
+.f1-axis     { width: 100%; height: 2px; background: var(--border); }
+.f1-legend   { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.f1-legend-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.74rem; color: var(--muted); }
+.f1-legend-dot  { width: 13px; height: 13px; border-radius: 2px; flex-shrink: 0; }
+
+/* ============================================================
+   FIGURE 2 — MPU Line Chart (Paper 2)
+   ============================================================ */
+.f2-wrap { display: flex; flex-direction: column; gap: 1.1rem; }
+.mpu-canvas { display: block; width: 100%; height: 210px; }
+.f2-counters { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.f2-counter {
+  text-align: center;
+  padding: 0.7rem 1.1rem;
+  background: var(--accent-light);
+  border-radius: 4px;
+  min-width: 108px;
+}
+.f2-counter-val {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 1.65rem;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.f2-counter-lbl { font-size: 0.71rem; color: var(--muted); line-height: 1.35; margin-top: 0.3rem; }
+
+/* ============================================================
+   FIGURE 3 — ETF Callouts (Paper 3)
+   ============================================================ */
+.f3-callouts { display: flex; flex-direction: column; gap: 0.7rem; }
+.f3-callout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-light);
+  opacity: 0;
+  transform: translateX(-18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.f3-callout.in { opacity: 1; transform: translateX(0); }
+.f3-arrow { font-size: 1.3rem; font-weight: 700; width: 26px; text-align: center; flex-shrink: 0; }
+.f3-arrow-up   { color: #1a7a3a; }
+.f3-arrow-down { color: var(--red); }
+.f3-text { font-size: 0.89rem; color: var(--text); line-height: 1.4; }
+.f3-sub  { font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
+
+/* ============================================================
+   FIGURE 4 — Day / Night Bars (Paper 4)
+   ============================================================ */
+.f4-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.f4-bars { display: flex; gap: 4rem; align-items: flex-end; height: 130px; }
+.f4-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; }
+.f4-icon { font-size: 1.3rem; }
+.f4-bar {
+  width: 58px;
+  border-radius: 3px 3px 0 0;
+  transition: height 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.f4-bar-day   { background: linear-gradient(180deg, #f9bc45 0%, #e08b10 100%); }
+.f4-bar-night { background: linear-gradient(180deg, #4a72c4 0%, #1b3a6b 100%); }
+.f4-lbl { font-size: 0.76rem; color: var(--muted); text-align: center; width: 76px; line-height: 1.4; }
+.f4-axis { width: 220px; height: 2px; background: var(--border); }
+.f4-note { font-size: 0.73rem; color: var(--muted); font-style: italic; text-align: center; max-width: 42ch; line-height: 1.5; margin-top: 0.4rem; }
+
+/* ============================================================
+   DATA & RESOURCES
+   ============================================================ */
+.data-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.75rem 2rem;
+  max-width: 780px;
+}
+.data-card-title { font-family: Georgia, serif; font-size: 1.18rem; color: var(--accent); margin-bottom: 0.4rem; }
+.data-meta { font-size: 0.8rem; color: var(--light); margin-bottom: 0.9rem; }
+.data-desc { font-size: 0.94rem; line-height: 1.72; max-width: 72ch; margin-bottom: 1.2rem; color: var(--text); }
+.data-cite { font-size: 0.79rem; color: var(--light); margin-top: 0.9rem; line-height: 1.5; }
+
+/* ============================================================
+   TEACHING
+   ============================================================ */
+.teaching-list { list-style: none; max-width: 560px; }
+.teaching-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.96rem;
+}
+.teaching-item:first-child { border-top: 1px solid var(--border); }
+.teaching-code { font-family: Georgia, serif; color: var(--accent); white-space: nowrap; min-width: 90px; }
+
+/* ============================================================
+   CV
+   ============================================================ */
+.cv-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.cv-embed {
+  width: 100%;
+  height: 680px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: block;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  font-size: 0.8rem;
+  color: var(--light);
+  border-top: 1px solid var(--border);
+}
+footer a { color: var(--light); }
+footer a:hover { color: var(--accent); text-decoration: underline; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 700px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .hero-photos { width: 180px; margin: 0 auto; }
+  .hero-photo-main { width: 180px; height: 225px; }
+  .hero-name { font-size: 1.8rem; }
+  .nav-inner { height: 50px; }
+  .nav-links { gap: 0.85rem; }
+  .nav-links a { font-size: 0.68rem; letter-spacing: 0.06em; }
+  .paper-card { padding: 1.3rem 1.2rem; }
+  .f1-groups { gap: 2rem; }
+  .f2-counters { gap: 0.6rem; }
+  .f2-counter { min-width: 90px; padding: 0.55rem 0.7rem; }
+  .f2-counter-val { font-size: 1.3rem; }
+  .f4-bars { gap: 2.5rem; }
+  .cv-embed { height: 480px; }
+  .section { padding: 3.5rem 0; }
+  #hero { padding: 2.5rem 0 3rem; }
+  .section-heading { font-size: 1.4rem; }
+}
+@media (max-width: 420px) {
+  .nav-name { font-size: 0.85rem; }
+  .nav-links a { font-size: 0.68rem; }
+  .f2-counters { flex-direction: column; align-items: center; }
+}
+
+/* Ensure cards are visible if JS is disabled */
+</style>
+<noscript><style>.paper-card{opacity:1!important;transform:none!important;}</style></noscript>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     Edit: add/remove <li> entries to change nav links.
+     ============================================================ -->
+<nav id="top-nav">
+  <div class="nav-inner">
+    <span class="nav-name">Chi Wang</span>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#data">Data</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#cv">CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<!-- ============================================================
+     HERO
+     Edit: update name, bio, contact info, photo paths.
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-grid">
+
+    <!-- Photos column -->
+    <div class="hero-photos">
+      <img src="asset/photo.jpg" alt="Chi Wang" class="hero-photo-main">
+    </div>
+
+    <!-- Bio column -->
+    <div class="hero-content">
+      <h1 class="hero-name">Chi Wang, CFA</h1>
+      <p class="hero-role">Ph.D. Candidate in Finance</p>
+      <p class="hero-univ">G. Brint Ryan College of Business &nbsp;&middot;&nbsp; University of North Texas &nbsp;&middot;&nbsp; Expected 2027</p>
+
+      <p class="hero-bio">
+        I study empirical asset pricing, monetary policy uncertainty, and ETF market
+        structure, with additional interests in corporate finance and ESG investing.
+        My job market paper introduces the Virtual Federal Reserve — a multi-agent
+        LLM simulation calibrated to 1,806 Fed speeches — which recovers the
+        disagreement that institutional consensus suppresses before each FOMC vote.
+        Before my Ph.D., I spent eight years in asset management in China as a
+        portfolio manager specializing in quantitative strategies and structured products.
+        I have held the CFA charter since 2023.
+      </p>
+
+      <div class="hero-contact">
+        <a href="mailto:Chi.Wang@unt.edu">Chi.Wang@unt.edu</a>
+        <span class="sep">&middot;</span>
+        <span>+1 (940) 783-6045</span>
+        <span class="sep">&middot;</span>
+        <span>Denton, TX</span>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="asset/cv.pdf" download class="btn btn-primary">
+          <!-- download icon -->
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M1 12h12"/></svg>
+          Download CV
+        </a>
+        <a href="mailto:Chi.Wang@unt.edu" class="btn btn-outline">Contact</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     RESEARCH
+     To add a paper: copy one <article class="paper-card"> block,
+     give it a new data-card="N" (N = next integer), update all
+     content, then add animateFigureN() in the JS section below.
+     See README.md for the full step-by-step guide.
+     ============================================================ -->
+<section id="research" class="section">
+  <h2 class="section-heading">Research</h2>
+  <div class="paper-cards">
+
+    <!-- ══════════════════════════════════════════════════════
+         PAPER 1 — Arbitrage and Monetary Policymaker Disagreement
+         ══════════════════════════════════════════════════════ -->
+    <article class="paper-card" data-card="1">
+      <div class="paper-card-header">
+        <h3 class="paper-title">Arbitrage and Monetary Policymaker Disagreement</h3>
+      </div>
+      <p class="paper-status">Working Paper &nbsp;&middot;&nbsp; Presented at SWFA 2026 &nbsp;&middot;&nbsp; Submitted to <em>JFQA</em></p>
+      <p class="paper-summary">
+        Studies how disagreement among Federal Reserve policymakers affects arbitrage in
+        bond ETFs, using FOMC "dot plot" dispersion (2012–2023) as an observable measure
+        of disagreement. Higher near-term dispersion is associated with fewer
+        authorized-participant share creations and wider ETF price–NAV gaps, implying
+        binding limits to arbitrage.
+      </p>
+
+      <!-- Figure: grouped bar chart (schematic) -->
+      <div class="paper-figure">
+        <div class="fig-subtitle">Schematic — qualitative direction only, no fabricated magnitudes</div>
+        <div class="f1-wrap" id="fig1">
+          <div class="f1-groups">
+            <!-- Low dispersion group -->
+            <div class="f1-group">
+              <div class="f1-bars-row">
+                <div class="f1-bar-wrap">
+                  <div class="f1-bar f1-bar-blue" id="b1-ap-lo" style="height:0"></div>
+                  <div class="f1-bar-lbl">AP Share<br>Creations</div>
+                </div>
+                <div class="f1-bar-wrap">
+                  <div class="f1-bar f1-bar-red" id="b1-nav-lo" style="height:0"></div>
+                  <div class="f1-bar-lbl">Price&ndash;NAV<br>Deviation</div>
+                </div>
+              </div>
+              <div class="f1-axis"></div>
+              <div class="f1-group-label">Low Dispersion</div>
+            </div>
+            <!-- High dispersion group -->
+            <div class="f1-group">
+              <div class="f1-bars-row">
+                <div class="f1-bar-wrap">
+                  <div class="f1-bar f1-bar-blue" id="b1-ap-hi" style="height:0"></div>
+                  <div class="f1-bar-lbl">AP Share<br>Creations</div>
+                </div>
+                <div class="f1-bar-wrap">
+                  <div class="f1-bar f1-bar-red" id="b1-nav-hi" style="height:0"></div>
+                  <div class="f1-bar-lbl">Price&ndash;NAV<br>Deviation</div>
+                </div>
+              </div>
+              <div class="f1-axis"></div>
+              <div class="f1-group-label">High Dispersion</div>
+            </div>
+          </div>
+          <div class="f1-legend">
+            <div class="f1-legend-item">
+              <div class="f1-legend-dot" style="background:var(--accent)"></div>AP Share Creations
+            </div>
+            <div class="f1-legend-item">
+              <div class="f1-legend-dot" style="background:var(--red)"></div>Price&ndash;NAV Deviation
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-links">
+        <a href="asset/paper/Arbitrage_PMD2025.pdf" target="_blank" class="paper-link">PDF</a>
+        <button class="abstract-btn" onclick="toggleAbstract('abs1',this)">Abstract ▼</button>
+      </div>
+      <div class="abstract-panel" id="abs1">
+        This paper examines how disagreement among Federal Reserve policymakers constrains
+        arbitrage in fixed-income ETFs. Using the dispersion of individual FOMC participants'
+        federal funds rate projections from the "dot plot" (2012–2023) as an observable
+        proxy for policymaker disagreement, I find that higher near-term rate-path dispersion
+        is associated with fewer authorized-participant creation transactions and significantly
+        wider ETF price-to-NAV gaps. The results imply that monetary policy disagreement
+        generates information frictions that tighten limits to arbitrage in the bond ETF market.
+      </div>
+    </article>
+
+    <!-- ══════════════════════════════════════════════════════
+         PAPER 2 — Virtual Federal Reserve (JMP)
+         ══════════════════════════════════════════════════════ -->
+    <article class="paper-card" data-card="2">
+      <div class="paper-card-header">
+        <h3 class="paper-title">Measuring Monetary Policy Uncertainty Through an Agentic AI Framework: The Virtual Federal Reserve</h3>
+        <span class="badge badge-jmp">Job Market Paper</span>
+      </div>
+      <p class="paper-status">Working Paper, 2026</p>
+      <p class="paper-summary">
+        A multi-agent LLM simulation of 239 FOMC meetings (1996–2025), one agent per
+        voting member calibrated from 1,806 speeches, predicting individual votes with
+        91.7% accuracy. Introduces the Agentic AI MPU — a measure of committee
+        disagreement hidden by institutional consensus — that is distinct from existing
+        uncertainty indices.
+      </p>
+
+      <!-- Figure: MPU line chart + stat counters (data from agentic_MPU.csv) -->
+      <div class="paper-figure">
+        <div class="fig-subtitle">Agentic AI MPU Index — 239 FOMC meetings, 1996–2025 (real data)</div>
+        <div class="f2-wrap" id="fig2">
+          <canvas class="mpu-canvas" id="mpu-canvas" aria-label="Line chart of Agentic AI MPU index from 1996 to 2025"></canvas>
+          <div class="f2-counters">
+            <div class="f2-counter">
+              <span class="f2-counter-val" id="cnt-accuracy">—</span>
+              <span class="f2-counter-lbl">per-voter prediction<br>accuracy</span>
+            </div>
+            <div class="f2-counter">
+              <span class="f2-counter-val" id="cnt-dissent">—</span>
+              <span class="f2-counter-lbl">avg suppressed dissent<br>per meeting</span>
+            </div>
+            <div class="f2-counter">
+              <span class="f2-counter-val" id="cnt-suppress">—</span>
+              <span class="f2-counter-lbl">speech-implied dissents<br>suppressed to YES</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-links">
+        <a href="asset/paper/essay1_draft.pdf" target="_blank" class="paper-link">PDF</a>
+        <a href="https://drive.google.com/file/d/1BR62Vk89cKKry1TskJG6fglI9lN9uu6c/view" target="_blank" class="paper-link">Data</a>
+        <button class="abstract-btn" onclick="toggleAbstract('abs2',this)">Abstract ▼</button>
+      </div>
+      <div class="abstract-panel" id="abs2">
+        I develop a Virtual Federal Reserve: a multi-agent LLM system that simulates 239
+        FOMC meetings from January 1996 to December 2025, assigning one calibrated AI agent
+        per voting member trained on 1,806 Fed speeches. The simulation predicts individual
+        member votes with 91.7% accuracy and recovers the latent pre-consensus disagreement —
+        the "true dissent" probability that institutional pressures transform into unanimous
+        votes. The resulting Agentic AI Monetary Policy Uncertainty (MPU) index captures
+        committee disagreement suppressed by herding and is orthogonal to existing text-based
+        uncertainty measures. On average, 39 percentage points of simulated dissent per meeting
+        are absorbed before the official vote, and 97.3% of speech-implied dissents are
+        transformed into YES votes by the consensus process.
+      </div>
+    </article>
+
+    <!-- ══════════════════════════════════════════════════════
+         PAPER 3 — ETF Ownership and Idiosyncratic Risk
+         ══════════════════════════════════════════════════════ -->
+    <article class="paper-card" data-card="3">
+      <div class="paper-card-header">
+        <h3 class="paper-title">ETF Ownership and Idiosyncratic Risk</h3>
+      </div>
+      <p class="paper-status">Working Paper</p>
+      <p class="paper-summary">
+        A one-standard-deviation increase in ETF ownership is associated with lower
+        idiosyncratic volatility and a lower implied cost of equity capital, and is
+        positively associated with R&amp;D spending. Identification uses Russell 2000
+        index reconstitutions as instruments (2SLS).
+      </p>
+
+      <!-- Figure: directional callouts (schematic) -->
+      <div class="paper-figure">
+        <div class="fig-subtitle">Directional findings — schematic, no fabricated magnitudes</div>
+        <div class="f3-callouts" id="fig3">
+          <div class="f3-callout" id="f3-c1">
+            <div class="f3-arrow f3-arrow-up">↑</div>
+            <div>
+              <div class="f3-text">ETF Ownership &rarr; <strong>↓ Idiosyncratic Volatility</strong></div>
+              <div class="f3-sub">Higher ETF ownership is associated with lower firm-level return volatility (2SLS)</div>
+            </div>
+          </div>
+          <div class="f3-callout" id="f3-c2">
+            <div class="f3-arrow f3-arrow-down">↓</div>
+            <div>
+              <div class="f3-text">ETF Ownership &rarr; <strong>↓ Implied Cost of Equity</strong></div>
+              <div class="f3-sub">Firms with greater ETF ownership face a lower equity risk premium</div>
+            </div>
+          </div>
+          <div class="f3-callout" id="f3-c3">
+            <div class="f3-arrow f3-arrow-up">↑</div>
+            <div>
+              <div class="f3-text">ETF Ownership &rarr; <strong>↑ R&amp;D Spending</strong></div>
+              <div class="f3-sub">ETF-owned firms invest more in research and development</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-links">
+        <a href="asset/paper/ETF_Volatility.pdf" target="_blank" class="paper-link">PDF</a>
+        <button class="abstract-btn" onclick="toggleAbstract('abs3',this)">Abstract ▼</button>
+      </div>
+      <div class="abstract-panel" id="abs3">
+        This paper examines the real effects of ETF ownership on firm risk and investment.
+        Using Russell 2000 index reconstitutions as a quasi-exogenous instrument for ETF
+        ownership (2SLS), I find that a one-standard-deviation increase in ETF ownership
+        is associated with meaningfully lower idiosyncratic stock return volatility and a
+        reduced implied cost of equity capital, alongside higher R&amp;D spending. The results
+        suggest ETF ownership may discipline managers toward long-term value creation by
+        reducing information asymmetry and broadening the shareholder base.
+      </div>
+    </article>
+
+    <!-- ══════════════════════════════════════════════════════
+         PAPER 4 — Anomaly Returns at Night and Day
+         ══════════════════════════════════════════════════════ -->
+    <article class="paper-card" data-card="4">
+      <div class="paper-card-header">
+        <h3 class="paper-title">Anomaly Returns at Night and Day</h3>
+      </div>
+      <p class="paper-status">Working Paper</p>
+      <p class="paper-summary">
+        Anomaly premiums shift from daytime to nighttime after academic publication and
+        post-2003. Daytime returns reflect investor mispricing; nighttime returns reflect
+        macroeconomic risk. Increased arbitrage contributes to attenuation in
+        close-to-close anomaly returns.
+      </p>
+
+      <!-- Figure: day vs. night bars (schematic) -->
+      <div class="paper-figure">
+        <div class="fig-subtitle">Premium decomposition — schematic shift from pre- to post-publication</div>
+        <div class="f4-wrap" id="fig4">
+          <div class="f4-bars">
+            <div class="f4-bar-wrap">
+              <div class="f4-icon" title="Daytime">&#9728;&#65039;</div>
+              <div class="f4-bar f4-bar-day" id="bar-day" style="height:0"></div>
+              <div class="f4-lbl">Daytime<br><span style="font-size:0.67rem;color:var(--light)">mispricing</span></div>
+            </div>
+            <div class="f4-bar-wrap">
+              <div class="f4-icon" title="Nighttime">&#127769;</div>
+              <div class="f4-bar f4-bar-night" id="bar-night" style="height:0"></div>
+              <div class="f4-lbl">Nighttime<br><span style="font-size:0.67rem;color:var(--light)">macro risk</span></div>
+            </div>
+          </div>
+          <div class="f4-axis"></div>
+          <div class="f4-note">
+            After publication &amp; post-2003, arbitrage erodes the daytime mispricing
+            premium; the nighttime macro-risk component becomes dominant.
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-links">
+        <a href="asset/paper/Anomaly%20Returns%20at%20Night%20and%20Day.pdf" target="_blank" class="paper-link">PDF</a>
+        <button class="abstract-btn" onclick="toggleAbstract('abs4',this)">Abstract ▼</button>
+      </div>
+      <div class="abstract-panel" id="abs4">
+        This paper decomposes anomaly returns into daytime and overnight components and
+        tracks how the balance shifts after academic publication and post-2003. Before
+        publication, anomaly premiums are concentrated during trading hours, consistent
+        with investor mispricing. After publication, daytime premiums attenuate as
+        sophisticated arbitrageurs trade against the predictability, while overnight
+        premiums — driven by macroeconomic risk exposures — persist or grow. Increased
+        arbitrage activity thus contributes to the observed decay in close-to-close anomaly
+        returns documented in the factor zoo literature.
+      </div>
+    </article>
+
+  </div><!-- /.paper-cards -->
+</section>
+
+<!-- ============================================================
+     DATA & RESOURCES
+     Edit: update title, description, and download link.
+     ============================================================ -->
+<section id="data" class="section">
+  <h2 class="section-heading">Data &amp; Resources</h2>
+  <div class="data-card">
+    <h3 class="data-card-title">Agentic AI MPU Index</h3>
+    <p class="data-meta">239 FOMC meetings &nbsp;&middot;&nbsp; January 1996 – December 2025 &nbsp;&middot;&nbsp; Free for research use</p>
+    <p class="data-desc">
+      Meeting-level Monetary Policy Uncertainty index covering 239 FOMC meetings from
+      January 1996 to December 2025. Each row reports the mean simulated true-dissent
+      probability before institutional herding under two model specifications: a locally-run
+      Qwen 2.5-7B model (<code>agentic_ai_mpu</code>) and the frontier Claude Opus 4.7
+      model (<code>agentic_ai_mpu_opus</code>). The index captures committee disagreement
+      suppressed by consensus-voting norms and is orthogonal to standard text-based
+      uncertainty measures. Free for research use; please cite Wang (2026).
+    </p>
+    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+      <a href="https://drive.google.com/file/d/1BR62Vk89cKKry1TskJG6fglI9lN9uu6c/view"
+         target="_blank" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M1 12h12"/></svg>
+        Download Dataset
+      </a>
+    </div>
+    <p class="data-cite">
+      <strong>Citation:</strong> Wang, C. (2026). Measuring Monetary Policy Uncertainty Through an
+      Agentic AI Framework: The Virtual Federal Reserve. <em>Working Paper, University of North Texas.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     TEACHING
+     Edit: add <li> entries to extend the course list.
+     ============================================================ -->
+<section id="teaching" class="section">
+  <h2 class="section-heading">Teaching</h2>
+  <ul class="teaching-list">
+    <li class="teaching-item">
+      <span class="teaching-code">FINA 3770</span>
+      <span>Introduction to Finance</span>
+    </li>
+    <li class="teaching-item">
+      <span class="teaching-code">FINA 4200</span>
+      <span>Investments</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     CV
+     Edit: update the src and href to point to the correct PDF.
+     ============================================================ -->
+<section id="cv" class="section">
+  <h2 class="section-heading">Curriculum Vitae</h2>
+  <div class="cv-actions">
+    <a href="asset/cv.pdf" download class="btn btn-primary">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M1 12h12"/></svg>
+      Download PDF
+    </a>
+    <a href="asset/cv.pdf" target="_blank" class="btn btn-outline">Open in New Tab</a>
+  </div>
+  <iframe src="asset/cv.pdf" class="cv-embed" title="Chi Wang — Curriculum Vitae"></iframe>
+</section>
+
+</div><!-- /.page-wrap -->
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <p>&copy; 2026 Chi Wang &nbsp;&middot;&nbsp; G. Brint Ryan College of Business, University of North Texas
+    &nbsp;&middot;&nbsp; <a href="mailto:Chi.Wang@unt.edu">Chi.Wang@unt.edu</a></p>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ============================================================
+   MPU DATASET
+   Source: data/agentic_MPU.csv (239 rows, 1996-2025)
+   Columns: [meeting_date, agentic_ai_mpu_qianwen, agentic_ai_mpu_opus4.7]
+   ============================================================ */
+var MPU = [
+["1/30/1996",0.215,0.375],["3/26/1996",0.22,0.35],["5/21/1996",0.23,0.35],
+["7/2/1996",0.225,0.4083],["8/20/1996",0.2542,0.35],["9/24/1996",0.25,0.35],
+["11/13/1996",0.4583,0.3542],["12/17/1996",0.2292,0.4083],["2/4/1997",0.239,0.485],
+["3/25/1997",0.44,0.29],["5/20/1997",0.275,0.485],["7/1/1997",0.265,0.485],
+["8/19/1997",0.329,0.29],["9/30/1997",0.215,0.485],["11/12/1997",0.3433,0.35],
+["12/16/1997",0.2167,0.4458],["2/3/1998",0.3083,0.4458],["3/31/1998",0.3333,0.4833],
+["5/19/1998",0.3583,0.4833],["6/30/1998",0.3136,0.4955],["8/18/1998",0.3955,0.4955],
+["9/29/1998",0.4355,0.3182],["11/17/1998",0.3136,0.4955],["12/22/1998",0.4091,0.4955],
+["2/2/1999",0.2773,0.3727],["3/30/1999",0.3409,0.3727],["5/18/1999",0.2364,0.3727],
+["6/29/1999",0.28,0.35],["8/24/1999",0.4,0.375],["10/5/1999",0.22,0.375],
+["11/16/1999",0.23,0.375],["12/21/1999",0.225,0.375],["2/2/2000",0.255,0.51],
+["3/21/2000",0.395,0.315],["5/16/2000",0.305,0.315],["6/28/2000",0.495,0.315],
+["8/22/2000",0.359,0.315],["10/3/2000",0.235,0.51],["11/15/2000",0.294,0.35],
+["12/19/2000",0.275,0.5286],["1/31/2001",0.265,0.465],["3/20/2001",0.305,0.465],
+["5/15/2001",0.345,0.465],["6/27/2001",0.6,0.335],["8/21/2001",0.2636,0.4545],
+["10/2/2001",0.29,0.465],["11/6/2001",0.285,0.465],["12/11/2001",0.2964,0.35],
+["1/30/2002",0.331,0.35],["3/19/2002",0.286,0.35],["5/7/2002",0.216,0.35],
+["6/26/2002",0.236,0.35],["8/13/2002",0.2967,0.35],["9/24/2002",0.2258,0.4292],
+["11/6/2002",0.2383,0.375],["12/10/2002",0.3127,0.4364],["1/29/2003",0.3375,0.4125],
+["3/18/2003",0.2583,0.4125],["5/6/2003",0.2758,0.35],["6/25/2003",0.2,0.35],
+["8/12/2003",0.375,0.4125],["9/16/2003",0.1917,0.4125],["10/28/2003",0.3208,0.35],
+["12/9/2003",0.2175,0.35],["1/28/2004",0.2758,0.35],["3/16/2004",0.2708,0.4125],
+["5/4/2004",0.2792,0.35],["6/30/2004",0.35,0.4125],["8/10/2004",0.3833,0.4125],
+["9/21/2004",0.3583,0.4125],["11/10/2004",0.4458,0.4125],["12/14/2004",0.355,0.4125],
+["2/2/2005",0.2708,0.4458],["3/22/2005",0.2217,0.4458],["5/3/2005",0.2827,0.35],
+["6/30/2005",0.3136,0.3955],["8/9/2005",0.185,0.35],["9/20/2005",0.281,0.4],
+["11/1/2005",0.251,0.35],["12/13/2005",0.33,0.35],["1/31/2006",0.28,0.35],
+["3/28/2006",0.2464,0.5182],["5/10/2006",0.3736,0.5182],["6/29/2006",0.406,0.535],
+["8/8/2006",0.286,0.35],["9/20/2006",0.3045,0.5591],["10/25/2006",0.3227,0.35],
+["12/12/2006",0.3418,0.35],["1/31/2007",0.3236,0.35],["3/21/2007",0.38,0.35],
+["5/9/2007",0.35,0.535],["6/28/2007",0.325,0.35],["8/7/2007",0.3,0.32],
+["9/18/2007",0.395,0.3],["10/31/2007",0.36,0.3],["12/11/2007",0.48,0.3],
+["1/30/2008",0.3536,0.3786],["3/18/2008",0.3,0.3227],["4/30/2008",0.267,0.34],
+["8/5/2008",0.4682,0.35],["9/16/2008",0.39,0.34],["10/29/2008",0.315,0.34],
+["12/16/2008",0.375,0.34],["1/28/2009",0.6278,0.6778],["3/18/2009",0.69,0.35],
+["4/29/2009",0.457,0.69],["6/24/2009",0.34,0.235],["8/12/2009",0.45,0.35],
+["9/23/2009",0.51,0.35],["11/4/2009",0.49,0.35],["12/16/2009",0.59,0.35],
+["1/27/2010",0.53,0.35],["3/16/2010",0.475,0.35],["4/28/2010",0.552,0.35],
+["6/23/2010",0.415,0.35],["8/10/2010",0.54,0.35],["9/21/2010",0.5111,0.35],
+["11/3/2010",0.5045,0.35],["12/14/2010",0.4591,0.35],["1/26/2011",0.62,0.35],
+["3/15/2011",0.557,0.35],["4/27/2011",0.377,0.35],["6/22/2011",0.45,0.35],
+["8/9/2011",0.612,0.35],["9/21/2011",0.492,0.35],["11/2/2011",0.495,0.35],
+["12/13/2011",0.52,0.35],["1/25/2012",0.485,0.35],["3/13/2012",0.637,0.35],
+["4/25/2012",0.583,0.35],["6/20/2012",0.5042,0.35],["8/1/2012",0.5433,0.35],
+["9/13/2012",0.6267,0.35],["10/24/2012",0.54,0.35],["12/12/2012",0.55,0.35],
+["1/30/2013",0.6642,0.35],["3/20/2013",0.5792,0.35],["5/1/2013",0.6392,0.35],
+["6/19/2013",0.5225,0.35],["7/31/2013",0.5958,0.35],["9/18/2013",0.637,0.35],
+["10/30/2013",0.553,0.35],["12/18/2013",0.6089,0.35],["1/29/2014",0.605,0.35],
+["3/19/2014",0.5667,0.35],["4/30/2014",0.5778,0.35],["6/18/2014",0.465,0.35],
+["7/30/2014",0.535,0.35],["9/17/2014",0.632,0.35],["10/29/2014",0.652,0.35],
+["12/17/2014",0.54,0.35],["1/28/2015",0.495,0.35],["3/18/2015",0.572,0.35],
+["4/29/2015",0.615,0.35],["6/17/2015",0.425,0.35],["7/29/2015",0.527,0.35],
+["9/17/2015",0.542,0.35],["10/28/2015",0.527,0.35],["12/16/2015",0.425,0.6],
+["1/27/2016",0.47,0.385],["3/16/2016",0.507,0.35],["4/27/2016",0.567,0.35],
+["6/15/2016",0.687,0.35],["7/27/2016",0.45,0.385],["9/21/2016",0.587,0.35],
+["11/2/2016",0.46,0.35],["12/14/2016",0.535,0.515],["2/1/2017",0.572,0.62],
+["3/15/2017",0.502,0.62],["5/3/2017",0.5556,0.35],["6/14/2017",0.5556,0.6],
+["7/26/2017",0.5722,0.35],["9/20/2017",0.4389,0.35],["11/1/2017",0.5167,0.6],
+["12/13/2017",0.4944,0.6],["1/31/2018",0.4389,0.35],["3/21/2018",0.4375,0.55],
+["5/2/2018",0.5062,0.35],["6/13/2018",0.3875,0.55],["8/1/2018",0.6437,0.35],
+["9/26/2018",0.5222,0.5056],["11/8/2018",0.6389,0.35],["12/19/2018",0.465,0.49],
+["1/30/2019",0.59,0.35],["3/20/2019",0.61,0.35],["5/1/2019",0.52,0.385],
+["6/19/2019",0.62,0.35],["7/31/2019",0.595,0.385],["9/18/2019",0.425,0.385],
+["10/30/2019",0.44,0.385],["12/11/2019",0.66,0.35],["1/29/2020",0.465,0.35],
+["3/15/2020",0.555,0.36],["4/29/2020",0.635,0.35],["6/10/2020",0.68,0.35],
+["7/29/2020",0.495,0.35],["9/16/2020",0.54,0.35],["11/5/2020",0.54,0.35],
+["12/16/2020",0.435,0.35],["1/27/2021",0.4909,0.35],["3/17/2021",0.5364,0.35],
+["4/28/2021",0.6318,0.35],["6/16/2021",0.6336,0.35],["7/28/2021",0.5227,0.35],
+["9/22/2021",0.7427,0.35],["11/3/2021",0.5591,0.35],["12/15/2021",0.5682,0.35],
+["1/26/2022",0.6556,0.35],["3/16/2022",0.5167,0.3389],["5/4/2022",0.6278,0.3389],
+["6/15/2022",0.6318,0.3409],["7/27/2022",0.6417,0.3417],["9/21/2022",0.6708,0.3417],
+["11/2/2022",0.6333,0.3417],["12/14/2022",0.6208,0.3417],["2/1/2023",0.5833,0.45],
+["3/22/2023",0.4909,0.4182],["5/3/2023",0.5091,0.4182],["6/14/2023",0.4909,0.35],
+["7/26/2023",0.5455,0.4182],["9/20/2023",0.6208,0.35],["11/1/2023",0.4917,0.35],
+["12/13/2023",0.5292,0.35],["1/31/2024",0.475,0.35],["3/20/2024",0.4708,0.35],
+["5/1/2024",0.5,0.35],["6/12/2024",0.4492,0.35],["7/31/2024",0.5208,0.35],
+["9/18/2024",0.45,0.4667],["11/7/2024",0.5542,0.4667],["12/18/2024",0.525,0.4667],
+["1/29/2025",0.5042,0.35],["3/19/2025",0.5292,0.35],["5/7/2025",0.5333,0.35],
+["6/18/2025",0.5208,0.35],["7/30/2025",0.5409,0.35],["9/17/2025",0.5125,0.45],
+["10/29/2025",0.4591,0.4182],["12/10/2025",0.42,0.445]
+];
+
+/* ============================================================
+   UTILITY — parse "M/D/YYYY" to decimal year for x-axis
+   ============================================================ */
+function toDecYear(s) {
+  var p = s.split('/');
+  var m = +p[0], d = +p[1], y = +p[2];
+  var start = new Date(y, 0, 1).getTime();
+  var end   = new Date(y + 1, 0, 1).getTime();
+  var cur   = new Date(y, m - 1, d).getTime();
+  return y + (cur - start) / (end - start);
+}
+
+/* ============================================================
+   ABSTRACT TOGGLE
+   ============================================================ */
+function toggleAbstract(id, btn) {
+  var panel = document.getElementById(id);
+  var open  = panel.classList.toggle('open');
+  btn.textContent = open ? 'Abstract ▲' : 'Abstract ▼';
+}
+
+/* ============================================================
+   SCROLL ANIMATION — IntersectionObserver
+   Cards fade+slide in; each figure animates once.
+   ============================================================ */
+var animated = {};
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (!entry.isIntersecting) return;
+    var card = entry.target;
+    card.classList.add('visible');
+    var n = card.getAttribute('data-card');
+    if (n && !animated[n]) {
+      animated[n] = true;
+      setTimeout(function() { animateFig(n); }, 280);
+    }
+    observer.unobserve(card);
+  });
+}, { threshold: 0.10 });
+
+document.querySelectorAll('.paper-card').forEach(function(c) {
+  observer.observe(c);
+});
+
+function animateFig(n) {
+  if (n === '1') animFig1();
+  if (n === '2') animFig2();
+  if (n === '3') animFig3();
+  if (n === '4') animFig4();
+}
+
+/* ============================================================
+   FIGURE 1 — Paper 1 bar chart
+   Low dispersion:  AP creations HIGH, NAV deviation LOW
+   High dispersion: AP creations LOW,  NAV deviation HIGH
+   ============================================================ */
+function animFig1() {
+  setH('b1-ap-lo',  105);
+  setH('b1-nav-lo',  28);
+  setH('b1-ap-hi',   42);
+  setH('b1-nav-hi',  98);
+}
+function setH(id, px) {
+  var el = document.getElementById(id);
+  if (el) el.style.height = px + 'px';
+}
+
+/* ============================================================
+   FIGURE 2 — Paper 2 MPU line chart (Canvas) + counters
+   ============================================================ */
+function animFig2() {
+  drawMPU();
+  setTimeout(function() {
+    counter('cnt-accuracy', 0, 91.7, 1, '%',  1300);
+    counter('cnt-dissent',  0, 39,   0, 'pp', 1300);
+    counter('cnt-suppress', 0, 97.3, 1, '%',  1300);
+  }, 700);
+}
+
+function drawMPU() {
+  var canvas = document.getElementById('mpu-canvas');
+  if (!canvas) return;
+
+  var dpr = window.devicePixelRatio || 1;
+  var W   = canvas.offsetWidth || 640;
+  var H   = canvas.offsetHeight || 210;
+  canvas.width  = Math.round(W * dpr);
+  canvas.height = Math.round(H * dpr);
+
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  /* Parse to {x, q, o} points */
+  var pts = MPU.map(function(r) {
+    return { x: toDecYear(r[0]), q: r[1], o: r[2] };
+  });
+  var xMin = pts[0].x, xMax = pts[pts.length - 1].x;
+  var yMin = 0, yMax = 0.82;
+
+  var PAD = { t: 14, r: 16, b: 38, l: 42 };
+  var cw = W - PAD.l - PAD.r;
+  var ch = H - PAD.t - PAD.b;
+
+  function mx(v) { return PAD.l + (v - xMin) / (xMax - xMin) * cw; }
+  function my(v) { return PAD.t + (1 - (v - yMin) / (yMax - yMin)) * ch; }
+
+  var fontSize = Math.max(9, Math.round(10 * Math.min(W / 640, 1)));
+
+  function drawBase() {
+    ctx.clearRect(0, 0, W, H);
+
+    /* Horizontal grid */
+    ctx.strokeStyle = '#e8ecf2';
+    ctx.lineWidth = 1;
+    [0.2, 0.4, 0.6, 0.8].forEach(function(yv) {
+      ctx.beginPath();
+      ctx.moveTo(PAD.l, my(yv));
+      ctx.lineTo(PAD.l + cw, my(yv));
+      ctx.stroke();
+    });
+
+    /* Y-axis labels */
+    ctx.fillStyle = '#999';
+    ctx.font = fontSize + 'px system-ui,sans-serif';
+    ctx.textAlign = 'right';
+    [0, 0.2, 0.4, 0.6, 0.8].forEach(function(yv) {
+      ctx.fillText(yv.toFixed(1), PAD.l - 5, my(yv) + fontSize * 0.38);
+    });
+
+    /* X-axis year labels */
+    ctx.textAlign = 'center';
+    [1996, 2000, 2005, 2010, 2015, 2020, 2025].forEach(function(yr) {
+      var x = mx(yr);
+      if (x >= PAD.l && x <= PAD.l + cw) {
+        ctx.fillText(yr, x, H - PAD.b + fontSize + 2);
+      }
+    });
+
+    /* Axes */
+    ctx.strokeStyle = '#ccc';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(PAD.l, PAD.t);
+    ctx.lineTo(PAD.l, PAD.t + ch);
+    ctx.lineTo(PAD.l + cw, PAD.t + ch);
+    ctx.stroke();
+
+    /* Y-axis rotated label */
+    ctx.save();
+    ctx.translate(11, PAD.t + ch / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.font = (fontSize - 1) + 'px system-ui,sans-serif';
+    ctx.fillStyle = '#aaa';
+    ctx.fillText('Dissent Probability', 0, 0);
+    ctx.restore();
+
+    /* Legend */
+    var lx = PAD.l + 8, ly = PAD.t + 11;
+    ctx.fillStyle = '#1b3a6b';
+    ctx.fillRect(lx, ly - 5, 18, 2.5);
+    ctx.fillStyle = '#555';
+    ctx.font = (fontSize - 1) + 'px system-ui,sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('Qwen 2.5-7B', lx + 22, ly);
+
+    ctx.fillStyle = '#d04020';
+    ctx.fillRect(lx + 108, ly - 5, 18, 2.5);
+    ctx.setLineDash([4, 3]);
+    ctx.strokeStyle = '#d04020';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(lx + 108, ly - 3.5);
+    ctx.lineTo(lx + 126, ly - 3.5);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#555';
+    ctx.fillText('Claude Opus 4.7', lx + 130, ly);
+  }
+
+  /* Animate lines left-to-right */
+  var DURATION = 2400;
+  var t0 = null;
+
+  function drawLines(n) {
+    var i, px, py;
+    /* Qianwen line — solid, navy */
+    ctx.beginPath();
+    ctx.strokeStyle = '#1b3a6b';
+    ctx.lineWidth   = 1.8;
+    ctx.lineJoin    = 'round';
+    ctx.setLineDash([]);
+    for (i = 0; i < n; i++) {
+      px = mx(pts[i].x); py = my(pts[i].q);
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+    /* Opus line — dashed, red-orange */
+    ctx.beginPath();
+    ctx.strokeStyle = '#d04020';
+    ctx.lineWidth   = 1.5;
+    ctx.setLineDash([4, 3]);
+    ctx.lineJoin    = 'round';
+    for (i = 0; i < n; i++) {
+      px = mx(pts[i].x); py = my(pts[i].o);
+      i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  requestAnimationFrame(function frame(ts) {
+    if (!t0) t0 = ts;
+    var prog = Math.min((ts - t0) / DURATION, 1);
+    var n    = Math.max(1, Math.ceil(prog * pts.length));
+    drawBase();
+    drawLines(n);
+    if (prog < 1) requestAnimationFrame(frame);
+  });
+}
+
+/* Counter animation — eased count-up */
+function counter(id, from, to, dec, suffix, dur) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var t0 = null;
+  requestAnimationFrame(function tick(ts) {
+    if (!t0) t0 = ts;
+    var p = Math.min((ts - t0) / dur, 1);
+    var e = 1 - Math.pow(1 - p, 3);  /* ease-out cubic */
+    el.textContent = (from + (to - from) * e).toFixed(dec) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  });
+}
+
+/* ============================================================
+   FIGURE 3 — Paper 3 ETF callouts (staggered slide-in)
+   ============================================================ */
+function animFig3() {
+  ['f3-c1','f3-c2','f3-c3'].forEach(function(id, i) {
+    setTimeout(function() {
+      var el = document.getElementById(id);
+      if (el) el.classList.add('in');
+    }, i * 210);
+  });
+}
+
+/* ============================================================
+   FIGURE 4 — Paper 4 day/night bars (two-phase: pre → post pub)
+   Phase 1: day tall  (pre-publication mispricing dominant)
+   Phase 2: night tall (post-publication macro-risk dominant)
+   ============================================================ */
+function animFig4() {
+  /* Phase 1 — pre-publication */
+  setTimeout(function() {
+    setH('bar-day',   108);
+    setH('bar-night',  38);
+  }, 60);
+  /* Phase 2 — post-publication shift */
+  setTimeout(function() {
+    setH('bar-day',   50);
+    setH('bar-night', 108);
+  }, 1350);
+}
+
+/* ============================================================
+   RESIZE — redraw MPU canvas if already animated
+   ============================================================ */
+var rTimer;
+window.addEventListener('resize', function() {
+  clearTimeout(rTimer);
+  rTimer = setTimeout(function() {
+    if (animated['2']) drawMPU();
+  }, 200);
+});
+</script>
+</body>
+</html>
