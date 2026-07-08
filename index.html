@@ -439,16 +439,28 @@ code { font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.85em; ba
 .teaching-code { font-family: Georgia, serif; color: var(--accent); white-space: nowrap; min-width: 90px; }
 
 /* ============================================================
-   CV
+   HONORS & AWARDS
    ============================================================ */
-.cv-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-.cv-embed {
-  width: 100%;
-  height: 680px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  display: block;
+.awards-list { list-style: none; max-width: 720px; }
+.award-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
 }
+.award-item:first-child { border-top: 1px solid var(--border); }
+.award-year {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 52px;
+  flex-shrink: 0;
+  padding-top: 0.05rem;
+}
+.award-body { flex: 1; }
+.award-title { font-size: 0.98rem; font-weight: 600; color: var(--text); }
+.award-sub { font-size: 0.85rem; color: var(--muted); margin-top: 0.15rem; }
 
 /* ============================================================
    FOOTER
@@ -462,6 +474,84 @@ footer {
 }
 footer a { color: var(--light); }
 footer a:hover { color: var(--accent); text-decoration: underline; }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-intro { font-size: 0.94rem; line-height: 1.7; color: var(--muted); margin-bottom: 0.5rem; }
+.contact-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+/* --- Left column: info + socials --- */
+.contact-info-block { display: flex; flex-direction: column; gap: 1.1rem; }
+.contact-line { display: flex; align-items: flex-start; gap: 0.85rem; }
+.contact-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.contact-body { min-width: 0; }
+.contact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--light); margin-bottom: 0.2rem; }
+.contact-value { font-size: 0.95rem; color: var(--text); font-weight: 500; word-break: break-word; }
+a.contact-value { color: var(--accent2); }
+a.contact-value:hover { color: var(--accent); text-decoration: underline; }
+.contact-socials { display: flex; gap: 0.75rem; margin-top: 0.4rem; }
+.contact-social {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.2s;
+}
+.contact-social:hover { background: #0f2447; transform: translateY(-2px); text-decoration: none; }
+
+/* --- Right column: form --- */
+.contact-form {
+  background: var(--accent-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.75rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field { margin-bottom: 1rem; display: flex; flex-direction: column; }
+.form-field label { font-size: 0.78rem; font-weight: 600; color: var(--accent); margin-bottom: 0.35rem; letter-spacing: 0.02em; }
+.form-field input,
+.form-field textarea {
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--text);
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(27,58,107,0.12);
+}
+.form-field textarea { resize: vertical; min-height: 120px; }
+.form-submit { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.form-status { font-size: 0.9rem; color: var(--accent); font-weight: 600; }
 
 /* ============================================================
    RESPONSIVE
@@ -480,10 +570,12 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
   .f2-counter { min-width: 90px; padding: 0.55rem 0.7rem; }
   .f2-counter-val { font-size: 1.3rem; }
   .f4-bars { gap: 2.5rem; }
-  .cv-embed { height: 480px; }
   .section { padding: 3.5rem 0; }
   #hero { padding: 2.5rem 0 3rem; }
   .section-heading { font-size: 1.4rem; }
+  .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 1.3rem; }
 }
 @media (max-width: 420px) {
   .nav-name { font-size: 0.85rem; }
@@ -509,7 +601,8 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
       <li><a href="#research">Research</a></li>
       <li><a href="#data">Data</a></li>
       <li><a href="#teaching">Teaching</a></li>
-      <li><a href="#cv">CV</a></li>
+      <li><a href="#honors">Honors</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -842,14 +935,13 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
       Meeting-level Monetary Policy Uncertainty index covering 239 FOMC meetings from
       January 1996 to December 2025. Each row reports the mean simulated true-dissent
       probability before institutional herding under two model specifications: a locally-run
-      Qwen 2.5-7B model (<code>agentic_ai_mpu</code>) and the frontier Claude Opus 4.7
-      model (<code>agentic_ai_mpu_opus</code>). The index captures committee disagreement
+      Qwen 2.5-7B model (<code>agentic_ai_mpu_qianwen</code>) and the frontier GPT-4o
+      model (<code>agentic_ai_mpu_gpt4o</code>). The index captures committee disagreement
       suppressed by consensus-voting norms and is orthogonal to standard text-based
       uncertainty measures. Free for research use; please cite Wang (2026).
     </p>
     <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-      <a href="https://drive.google.com/file/d/1BR62Vk89cKKry1TskJG6fglI9lN9uu6c/view"
-         target="_blank" class="btn btn-primary">
+      <a href="data/agentic_MPU.csv" download class="btn btn-primary">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M1 12h12"/></svg>
         Download Dataset
       </a>
@@ -880,19 +972,131 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
 </section>
 
 <!-- ============================================================
-     CV
-     Edit: update the src and href to point to the correct PDF.
+     HONORS & AWARDS
+     Edit: add/remove <li class="award-item"> entries. Sorted newest first.
      ============================================================ -->
-<section id="cv" class="section">
-  <h2 class="section-heading">Curriculum Vitae</h2>
-  <div class="cv-actions">
-    <a href="asset/cv.pdf" download class="btn btn-primary">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M1 12h12"/></svg>
-      Download PDF
-    </a>
-    <a href="asset/cv.pdf" target="_blank" class="btn btn-outline">Open in New Tab</a>
+<section id="honors" class="section">
+  <h2 class="section-heading">Honors &amp; Awards</h2>
+  <ul class="awards-list">
+    <li class="award-item">
+      <span class="award-year">2026</span>
+      <div class="award-body">
+        <div class="award-title">Doctoral Candidate Research Award</div>
+        <div class="award-sub">G. Brint Ryan College of Business, University of North Texas</div>
+      </div>
+    </li>
+    <li class="award-item">
+      <span class="award-year">2026</span>
+      <div class="award-body">
+        <div class="award-title">Presenter &amp; Discussant — SWFA Annual Meeting</div>
+        <div class="award-sub">Southwestern Finance Association, Dallas, TX</div>
+      </div>
+    </li>
+    <li class="award-item">
+      <span class="award-year">2024</span>
+      <div class="award-body">
+        <div class="award-title">Discussant — FMA Annual Meeting</div>
+        <div class="award-sub">Financial Management Association</div>
+      </div>
+    </li>
+    <li class="award-item">
+      <span class="award-year">2023</span>
+      <div class="award-body">
+        <div class="award-title">CFA Charterholder</div>
+        <div class="award-sub">CFA Institute</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     Edit: update email, phone, office, and profile links.
+     ============================================================ -->
+<section id="contact" class="section">
+  <h2 class="section-heading">Contact Me</h2>
+
+  <div class="contact-layout">
+
+    <!-- Left: intro + contact info + social links -->
+    <div class="contact-info-block">
+      <p class="contact-intro">
+        I welcome conversations about monetary policy, agentic AI in finance, and
+        ETF market microstructure — as well as collaboration, data, and seminar invitations.
+        Send me a message on the right, or reach me directly using the details below.
+      </p>
+      <div class="contact-line">
+        <span class="contact-icon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        </span>
+        <span class="contact-body">
+          <span class="contact-label">Email</span>
+          <a href="mailto:Chi.Wang@unt.edu" class="contact-value">Chi.Wang@unt.edu</a>
+        </span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-icon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <span class="contact-body">
+          <span class="contact-label">Phone</span>
+          <a href="tel:+19407836045" class="contact-value">+1 (940) 783-6045</a>
+        </span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-icon">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <span class="contact-body">
+          <span class="contact-label">Office</span>
+          <span class="contact-value">G. Brint Ryan College of Business<br>1307 W. Highland St., Denton, TX 76201</span>
+        </span>
+      </div>
+
+      <!-- Social links. Edit: replace href="#" with your SSRN / LinkedIn URLs. -->
+      <div class="contact-socials">
+        <a href="#" target="_blank" rel="noopener" class="contact-social" title="SSRN" aria-label="SSRN profile">SSRN</a>
+        <a href="#" target="_blank" rel="noopener" class="contact-social" title="LinkedIn" aria-label="LinkedIn profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.94H5.56v8.4h2.78zM6.95 8.7a1.61 1.61 0 1 0 0-3.22 1.61 1.61 0 0 0 0 3.22zM18.44 18.34v-4.6c0-2.46-1.31-3.6-3.06-3.6a2.64 2.64 0 0 0-2.39 1.31v-1.13h-2.78v8.4h2.78v-4.66c0-1.23.23-2.42 1.76-2.42 1.5 0 1.52 1.4 1.52 2.5v4.58h2.77z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: contact form.
+         Works out-of-the-box via mailto (opens the visitor's email app).
+         To receive submissions in-page instead, sign up at formspree.io and:
+           1) set action="https://formspree.io/f/XXXXXXXX" and method="post"
+           2) delete the onsubmit="..." attribute below. -->
+    <form class="contact-form" id="contact-form" onsubmit="return sendContact(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="cf-first">First Name</label>
+          <input type="text" id="cf-first" name="first" required>
+        </div>
+        <div class="form-field">
+          <label for="cf-last">Last Name</label>
+          <input type="text" id="cf-last" name="last" required>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" required>
+      </div>
+      <div class="form-field">
+        <label for="cf-subject">Subject</label>
+        <input type="text" id="cf-subject" name="subject">
+      </div>
+      <div class="form-field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" required></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <span class="form-status" id="cf-status" role="status"></span>
+      </div>
+    </form>
+
   </div>
-  <iframe src="asset/cv.pdf" class="cv-embed" title="Chi Wang — Curriculum Vitae"></iframe>
 </section>
 
 </div><!-- /.page-wrap -->
@@ -912,89 +1116,89 @@ footer a:hover { color: var(--accent); text-decoration: underline; }
 /* ============================================================
    MPU DATASET
    Source: data/agentic_MPU.csv (239 rows, 1996-2025)
-   Columns: [meeting_date, agentic_ai_mpu_qianwen, agentic_ai_mpu_opus4.7]
+   Columns: [meeting_date, agentic_ai_mpu_qianwen, agentic_ai_mpu_gpt4o]
    ============================================================ */
 var MPU = [
-["1/30/1996",0.215,0.375],["3/26/1996",0.22,0.35],["5/21/1996",0.23,0.35],
-["7/2/1996",0.225,0.4083],["8/20/1996",0.2542,0.35],["9/24/1996",0.25,0.35],
-["11/13/1996",0.4583,0.3542],["12/17/1996",0.2292,0.4083],["2/4/1997",0.239,0.485],
-["3/25/1997",0.44,0.29],["5/20/1997",0.275,0.485],["7/1/1997",0.265,0.485],
-["8/19/1997",0.329,0.29],["9/30/1997",0.215,0.485],["11/12/1997",0.3433,0.35],
-["12/16/1997",0.2167,0.4458],["2/3/1998",0.3083,0.4458],["3/31/1998",0.3333,0.4833],
-["5/19/1998",0.3583,0.4833],["6/30/1998",0.3136,0.4955],["8/18/1998",0.3955,0.4955],
-["9/29/1998",0.4355,0.3182],["11/17/1998",0.3136,0.4955],["12/22/1998",0.4091,0.4955],
-["2/2/1999",0.2773,0.3727],["3/30/1999",0.3409,0.3727],["5/18/1999",0.2364,0.3727],
-["6/29/1999",0.28,0.35],["8/24/1999",0.4,0.375],["10/5/1999",0.22,0.375],
-["11/16/1999",0.23,0.375],["12/21/1999",0.225,0.375],["2/2/2000",0.255,0.51],
-["3/21/2000",0.395,0.315],["5/16/2000",0.305,0.315],["6/28/2000",0.495,0.315],
-["8/22/2000",0.359,0.315],["10/3/2000",0.235,0.51],["11/15/2000",0.294,0.35],
-["12/19/2000",0.275,0.5286],["1/31/2001",0.265,0.465],["3/20/2001",0.305,0.465],
-["5/15/2001",0.345,0.465],["6/27/2001",0.6,0.335],["8/21/2001",0.2636,0.4545],
-["10/2/2001",0.29,0.465],["11/6/2001",0.285,0.465],["12/11/2001",0.2964,0.35],
-["1/30/2002",0.331,0.35],["3/19/2002",0.286,0.35],["5/7/2002",0.216,0.35],
-["6/26/2002",0.236,0.35],["8/13/2002",0.2967,0.35],["9/24/2002",0.2258,0.4292],
-["11/6/2002",0.2383,0.375],["12/10/2002",0.3127,0.4364],["1/29/2003",0.3375,0.4125],
-["3/18/2003",0.2583,0.4125],["5/6/2003",0.2758,0.35],["6/25/2003",0.2,0.35],
-["8/12/2003",0.375,0.4125],["9/16/2003",0.1917,0.4125],["10/28/2003",0.3208,0.35],
-["12/9/2003",0.2175,0.35],["1/28/2004",0.2758,0.35],["3/16/2004",0.2708,0.4125],
-["5/4/2004",0.2792,0.35],["6/30/2004",0.35,0.4125],["8/10/2004",0.3833,0.4125],
-["9/21/2004",0.3583,0.4125],["11/10/2004",0.4458,0.4125],["12/14/2004",0.355,0.4125],
-["2/2/2005",0.2708,0.4458],["3/22/2005",0.2217,0.4458],["5/3/2005",0.2827,0.35],
-["6/30/2005",0.3136,0.3955],["8/9/2005",0.185,0.35],["9/20/2005",0.281,0.4],
-["11/1/2005",0.251,0.35],["12/13/2005",0.33,0.35],["1/31/2006",0.28,0.35],
-["3/28/2006",0.2464,0.5182],["5/10/2006",0.3736,0.5182],["6/29/2006",0.406,0.535],
-["8/8/2006",0.286,0.35],["9/20/2006",0.3045,0.5591],["10/25/2006",0.3227,0.35],
-["12/12/2006",0.3418,0.35],["1/31/2007",0.3236,0.35],["3/21/2007",0.38,0.35],
-["5/9/2007",0.35,0.535],["6/28/2007",0.325,0.35],["8/7/2007",0.3,0.32],
-["9/18/2007",0.395,0.3],["10/31/2007",0.36,0.3],["12/11/2007",0.48,0.3],
-["1/30/2008",0.3536,0.3786],["3/18/2008",0.3,0.3227],["4/30/2008",0.267,0.34],
-["8/5/2008",0.4682,0.35],["9/16/2008",0.39,0.34],["10/29/2008",0.315,0.34],
-["12/16/2008",0.375,0.34],["1/28/2009",0.6278,0.6778],["3/18/2009",0.69,0.35],
-["4/29/2009",0.457,0.69],["6/24/2009",0.34,0.235],["8/12/2009",0.45,0.35],
-["9/23/2009",0.51,0.35],["11/4/2009",0.49,0.35],["12/16/2009",0.59,0.35],
-["1/27/2010",0.53,0.35],["3/16/2010",0.475,0.35],["4/28/2010",0.552,0.35],
-["6/23/2010",0.415,0.35],["8/10/2010",0.54,0.35],["9/21/2010",0.5111,0.35],
-["11/3/2010",0.5045,0.35],["12/14/2010",0.4591,0.35],["1/26/2011",0.62,0.35],
-["3/15/2011",0.557,0.35],["4/27/2011",0.377,0.35],["6/22/2011",0.45,0.35],
-["8/9/2011",0.612,0.35],["9/21/2011",0.492,0.35],["11/2/2011",0.495,0.35],
-["12/13/2011",0.52,0.35],["1/25/2012",0.485,0.35],["3/13/2012",0.637,0.35],
-["4/25/2012",0.583,0.35],["6/20/2012",0.5042,0.35],["8/1/2012",0.5433,0.35],
-["9/13/2012",0.6267,0.35],["10/24/2012",0.54,0.35],["12/12/2012",0.55,0.35],
-["1/30/2013",0.6642,0.35],["3/20/2013",0.5792,0.35],["5/1/2013",0.6392,0.35],
-["6/19/2013",0.5225,0.35],["7/31/2013",0.5958,0.35],["9/18/2013",0.637,0.35],
-["10/30/2013",0.553,0.35],["12/18/2013",0.6089,0.35],["1/29/2014",0.605,0.35],
-["3/19/2014",0.5667,0.35],["4/30/2014",0.5778,0.35],["6/18/2014",0.465,0.35],
-["7/30/2014",0.535,0.35],["9/17/2014",0.632,0.35],["10/29/2014",0.652,0.35],
-["12/17/2014",0.54,0.35],["1/28/2015",0.495,0.35],["3/18/2015",0.572,0.35],
-["4/29/2015",0.615,0.35],["6/17/2015",0.425,0.35],["7/29/2015",0.527,0.35],
-["9/17/2015",0.542,0.35],["10/28/2015",0.527,0.35],["12/16/2015",0.425,0.6],
-["1/27/2016",0.47,0.385],["3/16/2016",0.507,0.35],["4/27/2016",0.567,0.35],
-["6/15/2016",0.687,0.35],["7/27/2016",0.45,0.385],["9/21/2016",0.587,0.35],
-["11/2/2016",0.46,0.35],["12/14/2016",0.535,0.515],["2/1/2017",0.572,0.62],
-["3/15/2017",0.502,0.62],["5/3/2017",0.5556,0.35],["6/14/2017",0.5556,0.6],
-["7/26/2017",0.5722,0.35],["9/20/2017",0.4389,0.35],["11/1/2017",0.5167,0.6],
-["12/13/2017",0.4944,0.6],["1/31/2018",0.4389,0.35],["3/21/2018",0.4375,0.55],
-["5/2/2018",0.5062,0.35],["6/13/2018",0.3875,0.55],["8/1/2018",0.6437,0.35],
-["9/26/2018",0.5222,0.5056],["11/8/2018",0.6389,0.35],["12/19/2018",0.465,0.49],
-["1/30/2019",0.59,0.35],["3/20/2019",0.61,0.35],["5/1/2019",0.52,0.385],
-["6/19/2019",0.62,0.35],["7/31/2019",0.595,0.385],["9/18/2019",0.425,0.385],
-["10/30/2019",0.44,0.385],["12/11/2019",0.66,0.35],["1/29/2020",0.465,0.35],
-["3/15/2020",0.555,0.36],["4/29/2020",0.635,0.35],["6/10/2020",0.68,0.35],
-["7/29/2020",0.495,0.35],["9/16/2020",0.54,0.35],["11/5/2020",0.54,0.35],
-["12/16/2020",0.435,0.35],["1/27/2021",0.4909,0.35],["3/17/2021",0.5364,0.35],
-["4/28/2021",0.6318,0.35],["6/16/2021",0.6336,0.35],["7/28/2021",0.5227,0.35],
-["9/22/2021",0.7427,0.35],["11/3/2021",0.5591,0.35],["12/15/2021",0.5682,0.35],
-["1/26/2022",0.6556,0.35],["3/16/2022",0.5167,0.3389],["5/4/2022",0.6278,0.3389],
-["6/15/2022",0.6318,0.3409],["7/27/2022",0.6417,0.3417],["9/21/2022",0.6708,0.3417],
-["11/2/2022",0.6333,0.3417],["12/14/2022",0.6208,0.3417],["2/1/2023",0.5833,0.45],
-["3/22/2023",0.4909,0.4182],["5/3/2023",0.5091,0.4182],["6/14/2023",0.4909,0.35],
-["7/26/2023",0.5455,0.4182],["9/20/2023",0.6208,0.35],["11/1/2023",0.4917,0.35],
-["12/13/2023",0.5292,0.35],["1/31/2024",0.475,0.35],["3/20/2024",0.4708,0.35],
-["5/1/2024",0.5,0.35],["6/12/2024",0.4492,0.35],["7/31/2024",0.5208,0.35],
-["9/18/2024",0.45,0.4667],["11/7/2024",0.5542,0.4667],["12/18/2024",0.525,0.4667],
-["1/29/2025",0.5042,0.35],["3/19/2025",0.5292,0.35],["5/7/2025",0.5333,0.35],
-["6/18/2025",0.5208,0.35],["7/30/2025",0.5409,0.35],["9/17/2025",0.5125,0.45],
-["10/29/2025",0.4591,0.4182],["12/10/2025",0.42,0.445]
+["1/30/1996",0.215,0.47],["3/26/1996",0.22,0.145],["5/21/1996",0.23,0.145],
+["7/2/1996",0.225,0.6917],["8/20/1996",0.2542,0.1375],["9/24/1996",0.25,0.2042],
+["11/13/1996",0.4583,0.5],["12/17/1996",0.2292,0.5292],["2/4/1997",0.239,0.65],
+["3/25/1997",0.44,0.36],["5/20/1997",0.275,0.6],["7/1/1997",0.265,0.78],
+["8/19/1997",0.329,0.35],["9/30/1997",0.215,0.61],["11/12/1997",0.3433,0.1208],
+["12/16/1997",0.2167,0.6875],["2/3/1998",0.3083,0.5792],["3/31/1998",0.3333,0.6375],
+["5/19/1998",0.3583,0.6292],["6/30/1998",0.3136,0.6364],["8/18/1998",0.3955,0.6227],
+["9/29/1998",0.4355,0.6636],["11/17/1998",0.3136,0.4909],["12/22/1998",0.4091,0.6182],
+["2/2/1999",0.2773,0.5636],["3/30/1999",0.3409,0.4182],["5/18/1999",0.2364,0.5727],
+["6/29/1999",0.28,0.21],["8/24/1999",0.4,0.35],["10/5/1999",0.22,0.42],
+["11/16/1999",0.23,0.41],["12/21/1999",0.225,0.555],["2/2/2000",0.255,0.68],
+["3/21/2000",0.395,0.205],["5/16/2000",0.305,0.21],["6/28/2000",0.495,0.28],
+["8/22/2000",0.359,0.4],["10/3/2000",0.235,0.525],["11/15/2000",0.294,0.235],
+["12/19/2000",0.275,0.525],["1/31/2001",0.265,0.255],["3/20/2001",0.305,0.245],
+["5/15/2001",0.345,0.235],["6/27/2001",0.6,0.585],["8/21/2001",0.2636,0.2955],
+["10/2/2001",0.29,0.18],["11/6/2001",0.285,0.12],["12/11/2001",0.2964,0.2273],
+["1/30/2002",0.331,0.22],["3/19/2002",0.286,0.23],["5/7/2002",0.216,0.16],
+["6/26/2002",0.236,0.1],["8/13/2002",0.2967,0.1667],["9/24/2002",0.2258,0.6167],
+["11/6/2002",0.2383,0.225],["12/10/2002",0.3127,0.5682],["1/29/2003",0.3375,0.6],
+["3/18/2003",0.2583,0.4083],["5/6/2003",0.2758,0.1125],["6/25/2003",0.2,0.1042],
+["8/12/2003",0.375,0.5625],["9/16/2003",0.1917,0.6],["10/28/2003",0.3208,0.1083],
+["12/9/2003",0.2175,0.1167],["1/28/2004",0.2758,0.1083],["3/16/2004",0.2708,0.55],
+["5/4/2004",0.2792,0.2667],["6/30/2004",0.35,0.1333],["8/10/2004",0.3833,0.1292],
+["9/21/2004",0.3583,0.1375],["11/10/2004",0.4458,0.2917],["12/14/2004",0.355,0.1292],
+["2/2/2005",0.2708,0.2208],["3/22/2005",0.2217,0.1583],["5/3/2005",0.2827,0.3455],
+["6/30/2005",0.3136,0.1273],["8/9/2005",0.185,0.24],["9/20/2005",0.281,0.13],
+["11/1/2005",0.251,0.355],["12/13/2005",0.33,0.245],["1/31/2006",0.28,0.235],
+["3/28/2006",0.2464,0.4636],["5/10/2006",0.3736,0.4636],["6/29/2006",0.406,0.525],
+["8/8/2006",0.286,0.175],["9/20/2006",0.3045,0.6773],["10/25/2006",0.3227,0.1818],
+["12/12/2006",0.3418,0.1727],["1/31/2007",0.3236,0.1818],["3/21/2007",0.38,0.125],
+["5/9/2007",0.35,0.615],["6/28/2007",0.325,0.115],["8/7/2007",0.3,0.445],
+["9/18/2007",0.395,0.22],["10/31/2007",0.36,0.24],["12/11/2007",0.48,0.185],
+["1/30/2008",0.3536,0.3071],["3/18/2008",0.3,0.2318],["4/30/2008",0.267,0.29],
+["8/5/2008",0.4682,0.1773],["9/16/2008",0.39,0.255],["10/29/2008",0.315,0.235],
+["12/16/2008",0.375,0.235],["1/28/2009",0.6278,0.7778],["3/18/2009",0.69,0.47],
+["4/29/2009",0.457,0.775],["6/24/2009",0.34,0.25],["8/12/2009",0.45,0.17],
+["9/23/2009",0.51,0.18],["11/4/2009",0.49,0.24],["12/16/2009",0.59,0.18],
+["1/27/2010",0.53,0.19],["3/16/2010",0.475,0.19],["4/28/2010",0.552,0.2],
+["6/23/2010",0.415,0.19],["8/10/2010",0.54,0.2],["9/21/2010",0.5111,0.2778],
+["11/3/2010",0.5045,0.25],["12/14/2010",0.4591,0.1909],["1/26/2011",0.62,0.2864],
+["3/15/2011",0.557,0.245],["4/27/2011",0.377,0.245],["6/22/2011",0.45,0.255],
+["8/9/2011",0.612,0.46],["9/21/2011",0.492,0.405],["11/2/2011",0.495,0.455],
+["12/13/2011",0.52,0.32],["1/25/2012",0.485,0.175],["3/13/2012",0.637,0.25],
+["4/25/2012",0.583,0.18],["6/20/2012",0.5042,0.1625],["8/1/2012",0.5433,0.1667],
+["9/13/2012",0.6267,0.175],["10/24/2012",0.54,0.2208],["12/12/2012",0.55,0.1625],
+["1/30/2013",0.6642,0.2],["3/20/2013",0.5792,0.2],["5/1/2013",0.6392,0.2083],
+["6/19/2013",0.5225,0.2167],["7/31/2013",0.5958,0.2083],["9/18/2013",0.637,0.225],
+["10/30/2013",0.553,0.24],["12/18/2013",0.6089,0.3111],["1/29/2014",0.605,0.25],
+["3/19/2014",0.5667,0.2667],["4/30/2014",0.5778,0.2778],["6/18/2014",0.465,0.315],
+["7/30/2014",0.535,0.415],["9/17/2014",0.632,0.325],["10/29/2014",0.652,0.38],
+["12/17/2014",0.54,0.365],["1/28/2015",0.495,0.235],["3/18/2015",0.572,0.23],
+["4/29/2015",0.615,0.305],["6/17/2015",0.425,0.24],["7/29/2015",0.527,0.26],
+["9/17/2015",0.542,0.235],["10/28/2015",0.527,0.26],["12/16/2015",0.425,0.39],
+["1/27/2016",0.47,0.72],["3/16/2016",0.507,0.295],["4/27/2016",0.567,0.295],
+["6/15/2016",0.687,0.365],["7/27/2016",0.45,0.715],["9/21/2016",0.587,0.48],
+["11/2/2016",0.46,0.35],["12/14/2016",0.535,0.255],["2/1/2017",0.572,0.38],
+["3/15/2017",0.502,0.26],["5/3/2017",0.5556,0.2833],["6/14/2017",0.5556,0.2778],
+["7/26/2017",0.5722,0.1833],["9/20/2017",0.4389,0.2111],["11/1/2017",0.5167,0.4111],
+["12/13/2017",0.4944,0.2611],["1/31/2018",0.4389,0.3167],["3/21/2018",0.4375,0.1375],
+["5/2/2018",0.5062,0.3688],["6/13/2018",0.3875,0.1375],["8/1/2018",0.6437,0.5125],
+["9/26/2018",0.5222,0.1278],["11/8/2018",0.6389,0.4222],["12/19/2018",0.465,0.255],
+["1/30/2019",0.59,0.295],["3/20/2019",0.61,0.24],["5/1/2019",0.52,0.7],
+["6/19/2019",0.62,0.375],["7/31/2019",0.595,0.42],["9/18/2019",0.425,0.5],
+["10/30/2019",0.44,0.56],["12/11/2019",0.66,0.305],["1/29/2020",0.465,0.175],
+["3/15/2020",0.555,0.375],["4/29/2020",0.635,0.115],["6/10/2020",0.68,0.13],
+["7/29/2020",0.495,0.095],["9/16/2020",0.54,0.105],["11/5/2020",0.54,0.105],
+["12/16/2020",0.435,0.095],["1/27/2021",0.4909,0.1182],["3/17/2021",0.5364,0.0909],
+["4/28/2021",0.6318,0.1091],["6/16/2021",0.6336,0.1818],["7/28/2021",0.5227,0.2182],
+["9/22/2021",0.7427,0.2682],["11/3/2021",0.5591,0.35],["12/15/2021",0.5682,0.3682],
+["1/26/2022",0.6556,0.5944],["3/16/2022",0.5167,0.2556],["5/4/2022",0.6278,0.1111],
+["6/15/2022",0.6318,0.2909],["7/27/2022",0.6417,0.2375],["9/21/2022",0.6708,0.2333],
+["11/2/2022",0.6333,0.1875],["12/14/2022",0.6208,0.1542],["2/1/2023",0.5833,0.2667],
+["3/22/2023",0.4909,0.2318],["5/3/2023",0.5091,0.2455],["6/14/2023",0.4909,0.2864],
+["7/26/2023",0.5455,0.3045],["9/20/2023",0.6208,0.3042],["11/1/2023",0.4917,0.3417],
+["12/13/2023",0.5292,0.2833],["1/31/2024",0.475,0.2625],["3/20/2024",0.4708,0.4167],
+["5/1/2024",0.5,0.4125],["6/12/2024",0.4492,0.2667],["7/31/2024",0.5208,0.2625],
+["9/18/2024",0.45,0.2708],["11/7/2024",0.5542,0.2833],["12/18/2024",0.525,0.3],
+["1/29/2025",0.5042,0.2792],["3/19/2025",0.5292,0.275],["5/7/2025",0.5333,0.5167],
+["6/18/2025",0.5208,0.3917],["7/30/2025",0.5409,0.2773],["9/17/2025",0.5125,0.275],
+["10/29/2025",0.4591,0.2773],["12/10/2025",0.42,0.305]
 ];
 
 /* ============================================================
@@ -1175,7 +1379,7 @@ function drawMPU() {
     ctx.stroke();
     ctx.setLineDash([]);
     ctx.fillStyle = '#555';
-    ctx.fillText('Claude Opus 4.7', lx + 130, ly);
+    ctx.fillText('GPT-4o', lx + 130, ly);
   }
 
   /* Animate lines left-to-right */
@@ -1195,7 +1399,7 @@ function drawMPU() {
       i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
     }
     ctx.stroke();
-    /* Opus line — dashed, red-orange */
+    /* GPT-4o line — dashed, red-orange */
     ctx.beginPath();
     ctx.strokeStyle = '#d04020';
     ctx.lineWidth   = 1.5;
@@ -1273,6 +1477,31 @@ window.addEventListener('resize', function() {
     if (animated['2']) drawMPU();
   }, 200);
 });
+
+/* ============================================================
+   CONTACT FORM — opens the visitor's email client (mailto).
+   Replace with a Formspree action to receive messages in-page.
+   ============================================================ */
+function sendContact(e) {
+  e.preventDefault();
+  var first   = document.getElementById('cf-first').value.trim();
+  var last    = document.getElementById('cf-last').value.trim();
+  var email   = document.getElementById('cf-email').value.trim();
+  var subject = document.getElementById('cf-subject').value.trim() || 'Website enquiry';
+  var message = document.getElementById('cf-message').value.trim();
+
+  var body = 'Name: ' + first + ' ' + last + '\n'
+           + 'Email: ' + email + '\n\n'
+           + message;
+
+  var href = 'mailto:Chi.Wang@unt.edu'
+           + '?subject=' + encodeURIComponent(subject)
+           + '&body='    + encodeURIComponent(body);
+
+  window.location.href = href;
+  document.getElementById('cf-status').textContent = 'Thanks! Your email app should open to send the message.';
+  return false;
+}
 </script>
 </body>
 </html>
